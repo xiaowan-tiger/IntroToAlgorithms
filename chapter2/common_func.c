@@ -7,7 +7,7 @@ void swap(int& a, int& b) {
 }
 
 void print_arr(int* arr, int len) {
-    for (int i = 0; i < len; ++i)
+    for (int i = 0; i < len; i++)
     {
         printf("%d\t", arr[i]);
     }

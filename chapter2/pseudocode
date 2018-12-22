@@ -1,8 +1,0 @@
-// linear searh
-
-for i = 1 to A.length
-    if A[i] = v
-        v = i
-
-if i = A.length + 1
-    v = NIL
