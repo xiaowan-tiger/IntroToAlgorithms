@@ -20,6 +20,7 @@ ap max_sub_cross_array(int* arr, int low, int mid, int high) {
 			left_idx = i;
 		}
 	}
+	sum = 0;
 	for (int i = mid + 1; i <= high; i++) {
 		sum += arr[i];
 		if (right_sum < sum) {
@@ -66,9 +67,9 @@ ap max_sub_array(int* arr, int low, int high) {
 
 int main(int argc, char const *argv[])
 {
-	// int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int a[10] = {1, 1, 1, 1, 1, 1, 1, 1};
-	ap a1 = max_sub_array(a, 0, 7);
-	printf("%d\n", a1.sum);
+	int a[10] = {-1, 2, 3, -4, 5, 6, -7, 8, -9, -10};
+	// int a[2] = {1, 1};
+	ap a1 = max_sub_array(a, 0, 9);
+	printf("%d\t%d\t%d\t", a1.sum, a1.left_idx, a1.right_idx);
 	return 0;
 }
