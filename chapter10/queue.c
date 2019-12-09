@@ -37,11 +37,11 @@ int dequeue() {
     int ret = -1;
     if (!isEmpty()) {
         ret = queue[head];
-        if (head == tail){ 
+	head = (head + 1) % QUEUE_MAX_SIZE;
+	if (head == tail){ 
             head = -1;
             tail = head;
-        } else 
-            head = (head + 1) % QUEUE_MAX_SIZE;
+        } 
     } else {
         printf("queue is empty, nothing can be poped\n"); 
     }
@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
     while(!isEmpty()) {
         printf("poped data is: %d\n", dequeue());
     }
-
+    dequeue();
 
     return 0;
 }
