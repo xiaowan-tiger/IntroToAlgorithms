@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdbool.h>
-
+#include "stack.h"
 // #define int bool
-#define STACK_MAX_SIZE 8
+#define STACK_MAX_SIZE 64
 // typedef true 1;
 // typedef false 0;
 int stack[STACK_MAX_SIZE];
@@ -13,6 +12,10 @@ bool isEmpty() {
         return true;
     else
         return false;
+}
+
+int get_stack_size() {
+    return top + 1;
 }
 
 bool isFull() {
@@ -41,31 +44,3 @@ int pop() {
     }
     return ret;
 }
-
-int main(int argc, char const *argv[])
-{
-
-    push(5);
-    push(6);
-    push(8);
-    push(3);
-    push(13);
-    push(65);
-    push(50);
-    push(50);
-    push(50);
-    push(50);
-    push(50);
-    push(50);
-
-
-    while(!isEmpty()) {
-        printf("poped data is %d \n", pop());
-    }
-    pop()
-
-    /* code */
-    return 0;
-}
-
-
