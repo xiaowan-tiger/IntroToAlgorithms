@@ -11,8 +11,23 @@ void exe05();
 void exe06();
 void exe07();
 
-int main() {
-    exe07();
+
+int main(int argc, char const *argv[])
+{
+    if(argc > 1) {
+        if(*argv[1] == '1') 
+            exe01();
+        if(*argv[1] == '2') 
+            exe02();
+        if(*argv[1] == '4') 
+            exe04();
+        if(*argv[1] == '5') 
+            exe05();
+        if(*argv[1] == '6') 
+            exe06();
+        if(*argv[1] == '7') 
+            exe07();
+    }
     return 0;
 }
 
@@ -30,28 +45,32 @@ void copy_n(char dst[], char src[], int n){
 }      
 
 void deblank(char string[]) {
-    int i = 0;
-    int start = -1;
-    size_t len = strlen(string);
-    while(string[i++] != '\0') {
-        if (string[i] == ' '){
-            if((start != -1) && (i - start) == 1) // two continues blank
-                if((i + 1) <= len - 1){
-                    copy_n(string + i, string + i + 1, len - i - 1);
-                }
-                else
-                    string[i] = '\0';
-            else 
-                start = i;
+    char *tmp;
+    tmp = string;
+    int slow, fast;
+    slow = fast = 0;
+    int careful = 0;
+    while(tmp[fast] != '\0'){
+        if(tmp[fast] == ' ') {
+            if(careful)
+                fast++;
+            else {
+                string[slow++] = tmp[fast++];
+                careful = 1;
+            }
+        } else {
+            careful = 0;
+            string[slow++] = tmp[fast++];
         }
-        
     }
+    string[slow] = '\0';
 }
 
 void exe07() {
-    char *s1 = "  i";
-    deblank(s1);
+    char s1[600] = "abd  bd ;\nha    ha     ha   aksdj a;lksj f     a;lsjd al     a;lsdj                   asdf";
     printf("%s\n", s1);
+    deblank(s1);
+    printf("  removed repeated blank is: \n%s\n", s1);
 
 }
 
